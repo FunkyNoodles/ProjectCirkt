@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Project Cirkt</string>
+
+    <string name="title_section1">Find</string>
+    <string name="title_section2">All</string>
+    <string name="title_section3">More</string>
+
+    <string name="hello_world">Hello world!</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
