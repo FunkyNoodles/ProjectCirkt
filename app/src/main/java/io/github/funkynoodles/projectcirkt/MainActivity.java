@@ -16,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 
@@ -74,6 +76,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                             .setText(mSectionsPagerAdapter.getPageTitle(i))
                             .setTabListener(this));
         }
+
     }
 
 
@@ -98,6 +101,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
@@ -171,6 +175,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
+
             return fragment;
         }
 
@@ -180,8 +185,19 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
+
+            /*Spinner spinner = (Spinner) getView().findViewById(R.id.timeSpinner);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                    R.array.timeArray, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);*/
+            View myFragmentView = inflater.inflate(R.layout.fragment_main, container, false);
+            Spinner dropdown = (Spinner)myFragmentView.findViewById(R.id.timeSpinner);
+            String[] items = new String[]{"1", "2", "three"};
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, items);
+            dropdown.setAdapter(adapter);
+            return myFragmentView;
+
         }
     }
 
