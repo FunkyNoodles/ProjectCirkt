@@ -37,7 +37,7 @@ public class FindFragment extends Fragment {
         findBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                String testURL = "http://courses.illinois.edu/cisapp/explorer/schedule/2015/fall/CS/225/35917.xml";
+                String testURL = "http://courses.illinois.edu/cisapp/explorer/schedule/2015/fall/CS/233/63733.xml";
                 obj = new HandleXML(testURL);
                 obj.fetchXML();
                 while(obj.parsingComplete);
