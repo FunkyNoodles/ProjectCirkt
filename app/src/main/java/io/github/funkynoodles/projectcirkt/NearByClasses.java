@@ -1,5 +1,6 @@
 package io.github.funkynoodles.projectcirkt;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +13,7 @@ public class NearByClasses extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_near_by_classes);
+        Intent intent = getIntent();
     }
 
     @Override

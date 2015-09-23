@@ -82,7 +82,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -104,7 +103,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
@@ -162,4 +160,5 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             return null;
         }
     }
+
 }

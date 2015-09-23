@@ -1,5 +1,6 @@
 package io.github.funkynoodles.projectcirkt;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -58,8 +59,18 @@ public class FindFragment extends Fragment {
                 System.out.println(obj.getRoomNumber());
                 System.out.println(obj.getBuildingName());
                 System.out.println(obj.getInstructors());
+
+                Intent intent = new Intent(v.getContext(),NearByClasses.class);
+                startActivity(intent);
             }
         });
         return myFragmentView;
+    }
+
+    /**
+     * Called when Find button is pressed
+     */
+    public void findClasses(View view){
+
     }
 }
