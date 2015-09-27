@@ -137,7 +137,10 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             if(position == 0){
                 return FindFragment.newInstance();
             }
-            return PlaceholderFragment.newInstance(position + 1);
+            if(position == 1){
+                return AllFragment.newInstance();
+            }
+            return PlaceholderFragment.newInstance(position +1);
         }
 
         @Override
@@ -160,5 +163,4 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             return null;
         }
     }
-
 }

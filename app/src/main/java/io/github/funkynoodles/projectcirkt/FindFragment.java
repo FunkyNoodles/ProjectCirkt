@@ -10,11 +10,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
+
 /**
  * Created by Louis on 9/14/2015.
  * contains contents for "Find" tab
  */
 public class FindFragment extends Fragment {
+
+    //public ArrayList<String> listViewArray = new ArrayList<String>();
+    NearByClasses nbc = new NearByClasses();
 
     public static FindFragment newInstance(){
         FindFragment fragment = new FindFragment();
@@ -38,27 +43,27 @@ public class FindFragment extends Fragment {
         findBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                String testURL = "http://courses.illinois.edu/cisapp/explorer/schedule/2015/fall/CS/233/63733.xml";
+                String testURL = "http://courses.illinois.edu/cisapp/explorer/schedule/2015/fall/CS/225/35917.xml";
                 obj = new HandleXML(testURL);
                 obj.fetchXML();
                 while(obj.parsingComplete);
-                System.out.println(obj.getSubjectID());
-                System.out.println(obj.getSubjectName());
-                System.out.println(obj.getCourseID());
-                System.out.println(obj.getCourseName());
-                System.out.println(obj.getDescription());
-                System.out.println(obj.getSectionNumber());
-                System.out.println(obj.getStatusCode());
-                System.out.println(obj.getSectionNotes());
-                System.out.println(obj.getStartDate());
-                System.out.println(obj.getEndDate());
-                System.out.println(obj.getMeetingType());
-                System.out.println(obj.getMeetingStart());
-                System.out.println(obj.getMeetingEnd());
-                System.out.println(obj.getDaysOfTheWeek());
-                System.out.println(obj.getRoomNumber());
-                System.out.println(obj.getBuildingName());
-                System.out.println(obj.getInstructors());
+                NearByClasses.listViewArrayList.clear();
+                NearByClasses.listViewArrayList.add(obj.getCourseName() + ", " + obj.getSubjectName());
+                NearByClasses.listViewArrayList.add(obj.getSubjectID() + " " + obj.getCourseID());
+                NearByClasses.listViewArrayList.add(obj.getDescription());
+                NearByClasses.listViewArrayList.add(obj.getSectionNumber());
+                NearByClasses.listViewArrayList.add(obj.getSectionNotes());
+                NearByClasses.listViewArrayList.add(obj.getStatusCode());
+                NearByClasses.listViewArrayList.add(obj.getStartDate());
+                NearByClasses.listViewArrayList.add(obj.getEndDate());
+                NearByClasses.listViewArrayList.add(obj.getMeetingType());
+                NearByClasses.listViewArrayList.add(obj.getMeetingStart());
+                NearByClasses.listViewArrayList.add(obj.getMeetingEnd());
+                NearByClasses.listViewArrayList.add(obj.getDaysOfTheWeek());
+                NearByClasses.listViewArrayList.add(obj.getBuildingName() + " " + obj.getRoomNumber());
+                for(int loop1=0;loop1<obj.getInstructors().size();loop1++){
+                    NearByClasses.listViewArrayList.add(obj.getInstructors().get(loop1));
+                }
 
                 Intent intent = new Intent(v.getContext(),NearByClasses.class);
                 startActivity(intent);

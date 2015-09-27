@@ -13,9 +13,9 @@ import java.util.ArrayList;
      */
 public class HandleXML {
 
-    /**
-     *String variables setup
-     */
+/**
+ *String variables setup
+ */
     private String subjectID;
     private String subjectName;
     private String courseID;
@@ -33,6 +33,10 @@ public class HandleXML {
     private String roomNumber;
     private String buildingName;
     private ArrayList<String> instructors = new ArrayList<String>();
+    private ArrayList<String> calendarYears = new ArrayList<>();
+    private ArrayList<String> terms = new ArrayList<>();
+    private String creditHours;
+
 
     private XmlPullParserFactory xmlFactoryObject;
 
@@ -93,6 +97,10 @@ public class HandleXML {
                             buildingName = text;
                         }else if(name.equals("instructor")){
                             instructors.add(text);
+                        }else if(name.equals("calendarYear")){
+                            calendarYears.add(text);
+                        }else if(name.equals("term")){
+                            terms.add(text);
                         }
                         break;
                 }
@@ -102,6 +110,7 @@ public class HandleXML {
         }catch(Exception e){
             e.printStackTrace();
             System.out.println("There were errors retrieving the information");
+            parsingComplete = false;
         }
     }
 
@@ -209,5 +218,17 @@ public class HandleXML {
 
     public String getUrlString() {
         return urlString;
+    }
+
+    public ArrayList<String> getCalendarYears() {
+        return calendarYears;
+    }
+
+    public ArrayList<String> getTerms() {
+        return terms;
+    }
+
+    public String getCreditHours() {
+        return creditHours;
     }
 }

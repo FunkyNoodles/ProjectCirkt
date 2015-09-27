@@ -5,15 +5,31 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 public class NearByClasses extends ActionBarActivity {
 
+    public static ArrayList<String> listViewArrayList = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_near_by_classes);
         Intent intent = getIntent();
+        String[] listViewArray = new String[listViewArrayList.size()];//{"1","34df","1dsfosf"};//
+        for(int loop1=0;loop1<listViewArrayList.size();loop1++){
+            if(listViewArrayList.get(loop1)==null){
+                listViewArrayList.remove(loop1);
+            }
+            //listViewArray[loop1] = listViewArrayList.get(loop1);
+        }
+        ArrayAdapter findListViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_find_list_view, listViewArrayList);
+
+        ListView findListView = (ListView)findViewById(R.id.findListView);
+        findListView.setAdapter(findListViewAdapter);
     }
 
     @Override

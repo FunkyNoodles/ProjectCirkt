@@ -36,8 +36,8 @@ public class PlaceholderFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+     public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                              Bundle savedInstanceState) {
 
             /*Spinner spinner = (Spinner) getView().findViewById(R.id.timeSpinner);
             ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
