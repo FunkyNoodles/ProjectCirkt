@@ -10,8 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-import java.util.ArrayList;
-
 /**
  * Created by Louis on 9/14/2015.
  * contains contents for "Find" tab
@@ -43,8 +41,7 @@ public class FindFragment extends Fragment {
         findBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                String testURL = "http://courses.illinois.edu/cisapp/explorer/schedule/2015/fall/CS/225/35917.xml";
-                obj = new HandleXML(testURL);
+                obj = new HandleXML("http://courses.illinois.edu/cisapp/explorer/schedule/2015/fall/CS/225/35917.xml");
                 obj.fetchXML();
                 while(obj.parsingComplete);
                 NearByClasses.listViewArrayList.clear();
@@ -67,6 +64,12 @@ public class FindFragment extends Fragment {
 
                 Intent intent = new Intent(v.getContext(),NearByClasses.class);
                 startActivity(intent);
+
+                getActivity().overridePendingTransition(R.animator.page_enter_animation, R.animator.page_exit_animation);
+
+
+                //getActivity().finish();
+                //getActivity().overridePendingTransition(R.animator.page_exit_animation, R.animator.page_enter_animation);
             }
         });
         return myFragmentView;

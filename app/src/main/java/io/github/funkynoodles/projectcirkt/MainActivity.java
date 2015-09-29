@@ -105,6 +105,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     }
 
     @Override
+    public void onPause(){
+        super.onPause();
+        overridePendingTransition(R.animator.page_enter_animation, R.animator.page_exit_animation);
+    }
+
+
+    @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
         // When the given tab is selected, switch to the corresponding page in
         // the ViewPager.

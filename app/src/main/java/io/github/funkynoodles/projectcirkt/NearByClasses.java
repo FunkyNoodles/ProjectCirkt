@@ -19,7 +19,7 @@ public class NearByClasses extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_near_by_classes);
         Intent intent = getIntent();
-        String[] listViewArray = new String[listViewArrayList.size()];//{"1","34df","1dsfosf"};//
+
         for(int loop1=0;loop1<listViewArrayList.size();loop1++){
             if(listViewArrayList.get(loop1)==null){
                 listViewArrayList.remove(loop1);
@@ -29,7 +29,19 @@ public class NearByClasses extends ActionBarActivity {
         ArrayAdapter findListViewAdapter = new ArrayAdapter<String>(this, R.layout.activity_find_list_view, listViewArrayList);
 
         ListView findListView = (ListView)findViewById(R.id.findListView);
+        findListView.setAdapter(null);
         findListView.setAdapter(findListViewAdapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.animator.page_back_enter_animation, R.animator.page_back_exit_animation);
+    }
+    @Override
+    public void onPause(){
+        super.onPause();
+        overridePendingTransition(R.animator.page_back_enter_animation, R.animator.page_back_exit_animation);
     }
 
     @Override
