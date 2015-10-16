@@ -43,6 +43,12 @@ public class FindFragment extends Fragment {
             public void onClick(View v){
                 obj = new HandleXML("http://courses.illinois.edu/cisapp/explorer/schedule/2015/fall/CS/225/35917.xml");
                 obj.fetchXML();
+
+                Intent intent = new Intent(v.getContext(),NearByClasses.class);
+                startActivity(intent);
+
+                getActivity().overridePendingTransition(R.animator.page_enter_animation, R.animator.page_exit_animation);
+
                 while(obj.parsingComplete);
                 NearByClasses.listViewArrayList.clear();
                 NearByClasses.listViewArrayList.add(obj.getCourseName() + ", " + obj.getSubjectName());
@@ -62,10 +68,7 @@ public class FindFragment extends Fragment {
                     NearByClasses.listViewArrayList.add(obj.getInstructors().get(loop1));
                 }
 
-                Intent intent = new Intent(v.getContext(),NearByClasses.class);
-                startActivity(intent);
 
-                getActivity().overridePendingTransition(R.animator.page_enter_animation, R.animator.page_exit_animation);
 
 
                 //getActivity().finish();
